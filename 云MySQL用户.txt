@@ -1,0 +1,4 @@
+mysql> grant select,insert,update,delete on *.* to user001@"%" Identified by "123456";
+以上为之前所见的新用户  用户名：user001  密码：123456
+
+root密码：hao123

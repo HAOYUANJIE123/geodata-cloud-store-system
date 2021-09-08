@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>地理信息服务共享云平台</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+</head>
+<style type="text/css">
+
+    input::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+        text-align: center;
+        font-size: 12px;
+    }
+    :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+        text-align: center;
+        font-size: 12px;
+    }
+    ::-moz-placeholder { /* Mozilla Firefox 19+ */
+        text-align: center;
+        font-size: 12px;
+    }
+    :-ms-input-placeholder { /* Internet Explorer 10-11 */
+        text-align: center;
+        font-size: 12px;
+    }
+    .findpwdbox{
+        float: left;
+        width: 45%;
+        max-width: 500px;
+        height: 200px;
+        position: absolute;
+        margin-left: 60%;
+        margin-top: 20%;
+        border:2px solid lightblue;
+        border-radius:10px;
+
+
+        /*设置负值，为要定位子盒子的一半高度*/
+
+    }
+    .register-box{
+        width: 50%;
+        max-width: 500px;
+        height: 500px;
+        position: absolute;
+        top: 40%;
+        margin-left:60%;
+        margin-top: -200px;
+        border:2px solid lightblue;
+        border-radius:30px;
+
+        /*设置负值，为要定位子盒子的一半高度*/
+
+    }
+    .register-title {
+        padding: 10px 10px;
+        background-color: rgba(0, 0, 0, 0.4);
+        border-top-right-radius: 28px;
+        border-top-left-radius: 30px;
+    }
+    .register-title h1 {
+        margin-top: 10px !important;
+        text-align: center;/*让文字水平居中*/
+        color: #fff;
+        font-weight: bold;
+        font:40px/normal "microsoft yahei", "Times New Roman", "宋体", Times, serif;
+
+    }
+
+    .register-box-label
+    {
+        float: left;
+        width:50px;
+        height: 40px;
+        text-align: center;
+        line-height: 40px;
+        font-size:100%;
+        background: rgba(255,255,255,0.6);
+        color:darkblue;
+    }
+    .register-box-text
+    {
+        height: 35px;
+        background: rgba(255,255,255,.8);
+        color:black;
+        line-height: 40px;
+        width:170px;
+
+    }
+
+
+    .form{background: rgba(255,255,255,0.2);width:400px;margin:120px auto;}
+    /*阴影*/
+    .fa{display: inline-block;top: 27px;left: 6px;position: relative;color: #ccc;}
+    input[type="text"],input[type="password"]{padding-left:0px;}
+    .checkbox{padding-left:21px;}
+
+    label
+    {
+        float: left;
+        width:60px;
+        height: 40px;
+        background: rgba(255,255,255,0.3);
+        color:darkblue;
+        text-align: center;
+        line-height: 40px;
+        font-size:100%;
+
+    }
+    .form-title
+    {
+        position: relative;
+        top: 1px;
+        display: inline-block;
+        font-family: 'Glyphicons Halflings';
+        -webkit-font-smoothing: antialiased;
+        font-style: normal;
+        font-weight: normal;
+        line-height: 1;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+
+
+    html, body {
+        height: 100%;
+    }
+
+    .box {
+        background: url(image/login.jpg) no-repeat center center;
+        background-size: cover;
+
+        margin: 0 auto;
+        position: relative;
+        width: 100%;
+        height: 100%;
+    }
+
+    .login-box {
+        width: 100%;
+        max-width: 500px;
+        height: 400px;
+        position: absolute;
+        top: 55%;
+
+        margin-top: -200px;
+
+        /*设置负值，为要定位子盒子的一半高度*/
+
+    }
+
+    @media screen and (min-width: 500px) {
+        .login-box {
+            left: 5%;
+            /*设置负值，为要定位子盒子的一半宽度*/
+            margin-left: 10px;
+        }
+    }
+
+    .form {
+        width: 100%;
+        max-width: 500px;
+        height: 250px;
+        margin: 2px auto 0px auto;
+    }
+
+    .login-content {
+        /* background:url("../image/03.png") no-repeat center center; */
+        border-bottom-left-radius: 8px;
+        border-bottom-right-radius: 8px;
+        height: 250px;
+        width: 100%;
+        max-width: 500px;
+        background-color: rgba(255, 250, 2550, .6);
+        float: left;
+    }
+
+    .input-group {
+        margin: 30px 0px 0px 40px !important;
+    }
+
+    .form-control,
+    .input-group {
+        height: 40px;
+        width: 75%;
+    }
+
+    .form-actions {
+        margin-top: 18px;
+        margin-left: 15%;
+    }
+
+    .form-group {
+        margin-bottom: 0px !important;
+
+    }
+    .radio-group{
+        margin-top:20px;
+        margin-left:30%;
+
+    }
+    .login-title {
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+        padding: 20px 10px;
+        background-color: rgba(0, 0, 0, .6);
+    }
+
+    .login-title h1 {
+        margin-top: 10px !important;
+        text-align: center;/*让文字水平居中*/
+
+    }
+
+    .login-title small {
+        color: #fff;
+        font-size: 100%;
+    }
+
+    .link p {
+        line-height: 20px;
+        margin-top: 30px;
+    }
+
+    .btn-sm {
+        padding: 8px 10% !important;
+        font-size: 16px !important;
+        left: 100px;
+
+
+    }
+
+    .flag {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        color: #fff;
+        font-weight: bold;
+        font: 14px/normal "microsoft yahei", "Times New Roman", "宋体", Times, serif;
+    }
+    #login,#reset{
+        margin-left:10px;
+        margin-right:10px;
+    }
+
+
+</style>
+<body>
+
+<div class="box">
+
+    <div id="findpwdbox" class="findpwdbox" style="display: none">
+        <div class="register-title ">
+            <h1>
+                <small>密码找回</small>
+            </h1>
+        </div>
+        <div>
+            <form  class="form-horizontal" method="post" action="PwdProtectionServlet">
+                <div>
+                    <div style="float: left;" >
+                        <label for="usrnum" class="register-box-label">账号</label>
+                        <input type="text" id="usrnum_find" name="usrnum" size="1" class="register-box-text" value="">
+                    </div>
+                    <!--<div style="float: right; " >-->
+                        <!--<label for="usrpwd" class="register-box-label">密码</label>-->
+                        <!--<input type="text" id="usrpwd_find" name="usrpwd" size="1" class="register-box-text" value="" placeholder="等待密码查询结果" style="">-->
+                    <!--</div>-->
+                </div>
+                <br/><br/><br/>
+                <div style="float: left;">
+                    <label for="select-type" class="register-box-label">密保</label>
+                    <select id="select-question_find" name="select-question" size="1" class="register-box-text" style="width: 400px">
+                        <option>请先选择密保问题？</option>
+                        <option>您的出生年月日期？(例：2000年01月01日)</option>
+                        <option>您所毕业的大学全称？</option>
+                        <option>您的家乡所在地？（例：XX省XX市XX区/县）</option>
+                        <option>您的父亲或者母亲的姓名？</option>
+                        <option>您的配偶的姓名？</option>
+                    </select>
+                </div>
+                <br/><br/>
+                <div style="float: left;" >
+                    <label for="answer" class="register-box-label">答案</label>
+                    <input type="text" id="answer_find" name="answer" size="1" class="register-box-text" value=""style="width: 390px">
+                </div>
+                <br/><br/><br/>
+                <div >
+                    <button type="submit" id="find" class="btn btn-sm btn-success" onclick="find()" style="margin-left: 60px"  >
+                        查询
+                    </button>
+                    <button type="button" id="exit_find" class="btn btn-sm btn-success" onclick="exit_find()" style="margin-left: 80px"  >
+                        退出
+                    </button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+
+
+    <div class="register-box" id="registerbox" style="display: none">
+        <div class="register-title ">
+            <h1>
+                <small>用户注册</small>
+            </h1>
+        </div>
+        <div>
+            <form  class="form-horizontal" method="post" action="RegisterServlet">
+                <div>
+                    <div style="float: left;">
+                        <label for="username" class="register-box-label">用户名</label>
+                        <input type="text" id="username" name="username" size="1" class="register-box-text ">
+                    </div>
+                    <div style="float: right;" >
+                        <label for="usrnum" class="register-box-label">账号</label>
+                        <input type="text" id="usrnum" name="usrnum" size="1" class="register-box-text">
+                    </div>
+                </div>
+                <br/><br/><br/>
+                <div>
+                    <div style="float: left;">
+                        <label for="select-type" class="register-box-label">类型</label>
+                        <select id="select-type" name="select-type" size="1" class="register-box-text" style="width: 190px">
+                            <option>用户</option>
+                            <option>管理员</option>
+                        </select>
+                    </div>
+                    <div style="float: right;" >
+                        <label for="usrpwd" class="register-box-label">密码</label>
+                        <input type="text" id="usrpwd" name="usrpwd" size="1" class="register-box-text">
+                    </div>
+                </div>
+                <br/><br/><br/>
+                <div style="float: left;">
+                    <label for="select-type" class="register-box-label">密保</label>
+                    <select id="select-question" name="select-question" size="1" class="register-box-text" style="width: 400px">
+                        <option>请先选择密保问题？</option>
+                        <option>您的出生年月日期？(例：2000年01月01日)</option>
+                        <option>您所毕业的大学全称？</option>
+                        <option>您的家乡所在地？（例：XX省XX市XX区/县）</option>
+                        <option>您的父亲或者母亲的姓名？</option>
+                        <option>您的配偶的姓名？</option>
+                    </select>
+                </div>
+                <br/><br/>
+                <div style="float: left;" >
+                    <label for="answer" class="register-box-label">答案</label>
+                    <input type="text" id="answer" name="answer" size="1" class="register-box-text" style="width: 390px">
+                </div>
+                <div style="float: left;margin-top: 3%">
+                    <label class="register-box-label">技能</label>
+                    <input type="checkbox" id="checkbox1" name="checkbox1" size="1" style="margin-top: 3%" ><font color="white">矢量分析</font></input>
+                    <input type="checkbox" id="checkbox2" name="checkbox2" size="1" style="margin-top: 3%" ><font color="white" >栅格分析</font></input>
+                    <input type="checkbox" id="checkbox3" name="checkbox3" size="1" style="margin-top: 3% " ><font color="white">地形分析</font></input>
+                    <input type="checkbox" id="checkbox4" name="checkbox4" size="1" style="margin-top: 3%" ><font color="white">网络分析</font></input>
+                    <input type="checkbox" id="checkbox5" name="checkbox5" size="1" style="margin-top: 3%" ><font color="white">遥感处理</font></input>
+                </div>
+                <br/><br/><br/><br/><br/><br/>
+                <div>
+                    <button type="sumbit" id="submit" class="btn btn-sm btn-success" onclick="submit()" style="margin-left: 60px"  >
+                        提交
+                    </button>
+                    <button type="button" id="exit" class="btn btn-sm btn-success" onclick="exit()" style="margin-left: 80px"  >
+                        退出
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="loginbox" class="login-box" style="display: block">
+        <div class="login-title ">
+            <h1>
+                <small>地理信息服务共享云平台</small>
+            </h1>
+        </div>
+        <div class="login-content ">
+            <div class="form">
+                <form id="modifyPassword" class="form-horizontal" method="post" action="LoginServlet">
+                    <!-- 用户名输入 -->
+                    <div class="form-group">
+                        <div class="col-xs-10 col-xs-offset-1">
+                            <div class="input-group">
+                                <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+                                <label for="userid">账号</label>
+                                <input type="text" id="userid" name="userid"  class="form-control" value="">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 密码输入 -->
+                    <div class="form-group">
+                        <div class="col-xs-10 col-xs-offset-1">
+                            <div class="input-group">
+									<span class="input-group-addon"><span
+                                            class="glyphicon glyphicon-lock"></span></span>
+                                <label for="password">密码</label>
+                                <input type="password" id="password" name="password" class="form-control" >
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 用户类型选择 -->
+                    <div class="radio-group">
+                        <input type="radio" name="radioname" id="radioname1" value="用户" checked="checked">用户&nbsp;
+                        <input type="radio" name="radioname" id="radioname2" value="管理员" >管理员&nbsp;
+                    </div>
+
+                    <!-- 登录重置按钮 -->
+                    <div class="form-group form-actions">
+                        <div class="col-xs-12 text-center">
+                            <button  type="login" name="login" class="btn btn-sm btn-success" onclick="find()">
+                                <span class="fa fa-check-circle"></span>登录
+                            </button>
+                            <button type="button" id="reset" class="btn btn-sm btn-danger"onclick="register()" >
+                                <span class="fa fa-close"></span> 注册
+                            </button>
+                            <label style="float: right;margin-right: 30px; width: auto;height:0px; " onclick="findpwd()">忘记密码?</label>
+                        </div>
+
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+
+<script src="js/jquery-3.4.0.js"></script>
+
+<script type="text/javascript" >
+
+    //注册按钮函数
+    function register () {
+        document.getElementById("findpwdbox").style.display="none";
+        document.getElementById("loginbox").style.display="none";
+        document.getElementById("registerbox").style.display="block";
+
+    }
+    //注册表中退出按钮函数
+    function exit () {
+
+        document.getElementById("registerbox").style.display="none";
+        document.getElementById("loginbox").style.display="block";
+    }
+    //注册表中提交按钮函数
+    function submit () {
+        document.getElementById("registerbox").style.display="none";
+        document.getElementById("loginbox").style.display="block";
+    }
+
+    //忘记密码按钮函数
+    function findpwd() {
+        document.getElementById("registerbox").style.display="none";
+        document.getElementById("findpwdbox").style.display="block";
+    }
+    //忘记密码查询函数
+    function find() {
+        //  document.getElementById("findqwdbox").style.display="block";
+    }
+    //忘记密码退出函数
+    function exit_find() {
+        document.getElementById("findpwdbox").style.display="none";
+        document.getElementById("loginbox").style.display="block";
+    }
+</script>
+
+</html>
